@@ -14,18 +14,4 @@ public abstract class Servicio {
     public double calcularMontoHoras(){
         return this.cantidadHoras * this.precioHora;
     }
-
-    //GETTERS Y SETTERS.
-    public double getCantidadHoras() {
-        return this.cantidadHoras;
-    }
-    public double getPrecioHora() {
-        return this.precioHora;
-    }
-    public void setCantidadHoras(double cantidadHoras) {
-        this.cantidadHoras = cantidadHoras;
-    }
-    public void setPrecioHora(double precioHora) {
-        this.precioHora = precioHora;
-    }
 }
