@@ -21,4 +21,8 @@ public class Pedido {
         return this.formaDePago.calcularPrecio(producto.getPrecio()) * cantidadInvolucrada
                 + this.envioSeleccionado.calcularPrecio();
     }
+
+    public Producto getProducto() {
+        return producto;
+    }
 }

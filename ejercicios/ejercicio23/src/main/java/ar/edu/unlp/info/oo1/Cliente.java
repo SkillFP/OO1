@@ -3,6 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class Cliente extends Persona{
     private Set<Pedido> pedidos = new HashSet<>();
@@ -22,8 +23,20 @@ public class Cliente extends Persona{
         }
     }
 
-    public int cantidadDe (String categoria){
-        if (!categoriaCantidad.containsKey(categoria)) return 0;
-        return categoriaCantidad.get(categoria);
+    public void cantidadPorCategoria (){
+        categoriaCantidad.entrySet()
+                .stream()
+                .forEach(entry -> System.out.println("Categoría: " + entry.getKey() + " Cantidad: " + entry.getValue()));
+    }
+
+    //En el ejercicio no era necesario hacer el primer Map aunque es una solución válida.
+    //Los métodos resuelven con lo que nos digan que hay por enunciado. No creamos nada adicional.
+    public void cantidadPorCategoriaAlternativo(){
+        Map<String, Integer> cantidadPorCategoriapedidos = pedidos
+                .stream()
+                .collect(Collectors.groupingBy(
+                        pedido -> pedido.getProducto().getCategoria(),
+                        Collectors.summingInt(pedido -> pedido.getProducto().getCantidad())
+                ));
     }
 }
